@@ -1,9 +1,47 @@
 import modulo_Utente
 import calcolatrice
 
-utenti: list[modulo_Utente.Cliente] = []
+utenti: list[modulo_Utente.Utente] = [] #lista global accessibile a ogni metodo
+
 calcolatrice = calcolatrice.Calcolatrice()
 
+def logica_calcolo():
+    print("Inserisci mail di accesso: ")
+    mail = input()
+    utente = login(mail)
+    if type(utente) is modulo_Utente.Utente:
+                for i in range(5):  #4 operazioni disponibili
+                    print("Operazioni disponibili: ")
+                    print("1. Somma")
+                    print("2. Differenza")
+                    print("3. Prodotto")
+                    print("4. Divisione")
+                    print("5. Potenza")
+
+                    selettore = int(input())
+                    
+                    match selettore:
+                        case 1: 
+                            valori = insert_valori()
+                            calcolatrice.somma(valori)
+                        case 2:
+                            valori = insert_valori()
+                            calcolatrice.sottrazione(valori)
+
+                        case 3:
+                            valori = insert_valori()
+                            calcolatrice.moltiplicazione(valori)
+
+                        case 4:
+                            valori = insert_valori()
+                            calcolatrice.divisione(valori)
+
+                        case 5:
+                            valori = insert_valori()
+                            calcolatrice.potenza(valori)
+
+                        case _:
+                            print("Scelta non idonea")
 def insert_valori():
     valori = []
     print("Quanti valori vuoi inserire")
@@ -68,43 +106,7 @@ while True:
     
     match selettore:
         case 1:
-            utente = login()
-            if not utente:
-                for i in range(5):  #4 operazioni disponibili
-                    print("Operazioni disponibili: ")
-                    print("1. Somma")
-                    print("2. Differenza")
-                    print("3. Prodotto")
-                    print("4. Divisione")
-                    print("5. Potenza")
-
-                    selettore = int(input())
-                    
-                    match selettore:
-                        case 1:
-                            
-                            valori = insert_valori()
-                            calcolatrice.somma(valori)
-                        case 2:
-                            valori = insert_valori()
-                            calcolatrice.sottrazione(valori)
-
-                        case 3:
-                            valori = insert_valori()
-                            calcolatrice.moltiplicazione(valori)
-
-                        case 4:
-                            valori = insert_valori()
-                            calcolatrice.divisione(valori)
-
-                        case 5:
-                            valori = insert_valori()
-                            calcolatrice.potenza(valori)
-
-                        case _:
-                            print("Scelta non idonea")
-                    
-
+            logica_calcolo()
         case 2:
             crea_utente()
         case 3:
