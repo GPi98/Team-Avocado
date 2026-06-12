@@ -1,0 +1,39 @@
+LOGIN UTENTE , UTENTE UNIQUE
+
+CALCOLATRICE CON ALMENO 5 OPERAZIONI DIVERSE , UNA LISTA DI RISULTATI E LISTA DI VALORI INSERITI
+
+DOPO 4 OPERAZIONI TI BUTTA FUORI
+
+
+CLASSE CALCOLATRICE
+class Calcolatrice :
+lista_risultati = []
+lista_valori_inseriti = []
+
+-- Metodi per le operazioni STATICI
+@ClassMethod
+def somma
+def sottrazione
+def operazione
+def divisione
+
+-- Metodi per i LOG
+
+@ClassMethod
+def log_operazioni 
+
+
+CLASSE UTENTE
+
+
+#Costruttore 
+username, password
+--Metodi per utente 
+toString()
+
+
+
+
+
+
+
