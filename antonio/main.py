@@ -13,7 +13,7 @@ def crea_utente():
     print("Inserisci password")
     password = input()
     
-    utente_temp = modulo_Utente.Cliente(nome_cognome, email, password)
+    utente_temp = modulo_Utente.Cliente(nome_cognome, email, password)  #istanza di appoggio che eventualmente verra inserita
     flag_gia_esistente = False
     
     for utente in utenti: #grazie a questo metodo evito di avere la stessa mail inserita piu volte
@@ -56,9 +56,17 @@ while True:
     
     match selettore:
         case 1:
-            utente = crea_utente()
+            
+            for i in range(5):
+                utente = login()
+                print("Operazioni disponibili: ")
+                print("1. Somma")
+                print("2. Differenza")
+                print("2. Prodotto")
+                print("4. Divisione")
+
         case 2:
-            pass
+            crea_utente()
         case 3:
             print("Arrivederci")
             break
