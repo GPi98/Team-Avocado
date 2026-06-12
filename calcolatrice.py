@@ -1,10 +1,19 @@
 class Calcolatrice : 
     lista_risultati = []
     lista_valori_inseriti = []
-    
+
+    def decoratore_linee(funzione):
+        def wrapper(*args, **kwargs):
+            print("----------Operazione--in--Corso--------")
+            funzione(*args, **kwargs)
+            print("----------Operazione--Terminata--------")
+        return wrapper
+
+   
     #Metodi
     #SOMMA
     @classmethod
+    @decoratore_linee
     def somma(cls, valori) :
         result = 0
         for v in valori :
@@ -15,6 +24,7 @@ class Calcolatrice :
     
     #MOLTIPLICAZIONE
     @classmethod
+    @decoratore_linee
     def moltiplicazione(cls, valori) :
         result = 1
         for v in valori :
@@ -22,11 +32,13 @@ class Calcolatrice :
             cls.lista_valori_inseriti.append(v)
         print (result)
         return cls.lista_risultati.append(result)
+    
     #SOTTRAZIONE
     @classmethod
+    @decoratore_linee
     def sottrazione(cls, valori) : 
         result = valori[0]
-        for valori in range(2,len(valori)) :
+        for valori in  valori[1:]:
             result -= valori
             cls.lista_valori_inseriti.append(valori)
         print (result)
@@ -34,9 +46,10 @@ class Calcolatrice :
     
     #DIVISIONE
     @classmethod
+    @decoratore_linee
     def divisione(cls, valori) : 
         result = valori[0]
-        for valori in range(2,len(valori)) :
+        for valori in valori[1:]:
             result = result/valori
             cls.lista_valori_inseriti.append(valori)
         print (result)
@@ -45,6 +58,7 @@ class Calcolatrice :
     #METODI STAMPA
     #lista result
     @classmethod
+    @decoratore_linee
     def log_risultati(cls) :
         if cls.lista_risultati :
             for l in cls.lista_risultati :
@@ -56,6 +70,7 @@ class Calcolatrice :
         
     #lista value
     @classmethod
+    @decoratore_linee
     def log_valori_inseriti(cls) :
         if cls.lista_risultati :
             for l in cls.lista_valori_inseriti :
@@ -64,15 +79,22 @@ class Calcolatrice :
         else :
             print("Lista valori inseriti e vuota")
             return
-    #metodo potenza
-        @classmethod
+        
+        
+    #metodo potenza    
+    @classmethod
+    @decoratore_linee
     def potenza(cls, valori) : 
         result = valori[0]
-        for valori in range(2,len(valori)) :
+        for valori in valori[1:]:
             result = result**valori
             cls.lista_valori_inseriti.append(valori)
         print (result)
         return cls.lista_risultati.append(result)
+    
+"""#test
+c = Calcolatrice
+c.potenza([111, 2, 4])"""
             
     
     
