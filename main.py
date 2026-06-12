@@ -1,6 +1,9 @@
 import modulo_Utente
+import calcolatrice
 
 utenti: list[modulo_Utente.Cliente] = []
+calcolatrice = calcolatrice.Calcolatrice()
+
 
 def crea_utente():
 #funzione di registrazione    
@@ -57,13 +60,30 @@ while True:
     match selettore:
         case 1:
             
-            for i in range(5):
+            for i in range(5):  #4 operazioni disponibili
                 utente = login()
                 print("Operazioni disponibili: ")
                 print("1. Somma")
                 print("2. Differenza")
-                print("2. Prodotto")
+                print("3. Prodotto")
                 print("4. Divisione")
+                
+                selettore = int(input())
+                
+                match selettore:
+                    case 1:
+                        pass
+                    case 2:
+                        pass
+                    case 3:
+                        pass
+                    case 4:
+                        pass
+                    case 5:
+                        pass
+                    case _:
+                        print("Scelta non idonea")
+                
 
         case 2:
             crea_utente()
