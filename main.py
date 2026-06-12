@@ -4,6 +4,14 @@ import calcolatrice
 utenti: list[modulo_Utente.Cliente] = []
 calcolatrice = calcolatrice.Calcolatrice()
 
+def insert_valori():
+    valori = []
+    print("Quanti valori vuoi inserire")
+    n_valori = int(input())
+    for i in range(n_valori+1):
+        valore = int(input("Inserisci il valore: "))
+        valori.append(valore)
+    return valori
 
 def crea_utente():
 #funzione di registrazione    
@@ -49,7 +57,8 @@ def login(email):
         if email == utente.email and password == utente.password:   #se entrambi i campi sono giusti, si procede col login
             return utente
         elif password != utente.password:
-            print("Password non corretta") 
+            print("Password non corretta")
+            return False
 
 while True:
     print("1. Accedi")
@@ -59,31 +68,42 @@ while True:
     
     match selettore:
         case 1:
-            
-            for i in range(5):  #4 operazioni disponibili
-                utente = login()
-                print("Operazioni disponibili: ")
-                print("1. Somma")
-                print("2. Differenza")
-                print("3. Prodotto")
-                print("4. Divisione")
-                
-                selettore = int(input())
-                
-                match selettore:
-                    case 1:
-                        pass
-                    case 2:
-                        pass
-                    case 3:
-                        pass
-                    case 4:
-                        pass
-                    case 5:
-                        pass
-                    case _:
-                        print("Scelta non idonea")
-                
+            utente = login()
+            if not utente:
+                for i in range(5):  #4 operazioni disponibili
+                    print("Operazioni disponibili: ")
+                    print("1. Somma")
+                    print("2. Differenza")
+                    print("3. Prodotto")
+                    print("4. Divisione")
+                    print("5. Potenza")
+
+                    selettore = int(input())
+                    
+                    match selettore:
+                        case 1:
+                            
+                            valori = insert_valori()
+                            calcolatrice.somma(valori)
+                        case 2:
+                            valori = insert_valori()
+                            calcolatrice.sottrazione(valori)
+
+                        case 3:
+                            valori = insert_valori()
+                            calcolatrice.moltiplicazione(valori)
+
+                        case 4:
+                            valori = insert_valori()
+                            calcolatrice.divisione(valori)
+
+                        case 5:
+                            valori = insert_valori()
+                            calcolatrice.potenza(valori)
+
+                        case _:
+                            print("Scelta non idonea")
+                    
 
         case 2:
             crea_utente()
