@@ -64,6 +64,15 @@ class Calcolatrice :
         else :
             print("Lista valori inseriti e vuota")
             return
+    #metodo potenza
+        @classmethod
+    def potenza(cls, valori) : 
+        result = valori[0]
+        for valori in range(2,len(valori)) :
+            result = result**valori
+            cls.lista_valori_inseriti.append(valori)
+        print (result)
+        return cls.lista_risultati.append(result)
             
     
     
